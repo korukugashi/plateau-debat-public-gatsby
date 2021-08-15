@@ -30,62 +30,11 @@ collections:
       - {label: "Horaires / durée", name: duration, widget: string}
       - {label: "Informations complémentaires", name: "body", widget: "markdown", required: false}
 
-  - name: "actions"
-    label: "Actions (actus)"
-    folder: "src/pages/nos-actions"
-    create: true
-    slug: "{{year}}-{{slug}}"
-    fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "action-post"}
-      - {label: "Titre", name: "title", widget: "string"}
-      - {label: "Date de publication", name: "date", widget: "datetime", pickerUtc: false, dateFormat: "DD/MM/YYYY", timeFormat: "HH:mm"}
-      - {label: "Description (faire assez court : pour Google et accueil)", name: "description", widget: "text"}
-      - {label: "Image de présentation", name: "featuredimage", widget: image, required: false}
-      - {label: "Article", name: "body", widget: "markdown"}
-      - label: "Tags"
-        name: "tags"
-        widget: "relation"
-        collection: "actionstags"
-        searchFields: ["label"]
-        valueField: "label"
-        displayFields: ["label"]
-        multiple: true
-
-  - name: "programmes"
-    label: "Actions (programmes)"
-    folder: "src/pages/nos-actions/programmes"
-    create: true
-    fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "programmes"}
-      - {label: "Titre", name: "title", widget: "string"}
-      - {label: "Description (faire assez court : pour Google et accueil)", name: "description", widget: "text"}
-      - {label: "Image de présentation", name: "featuredimage", widget: image, required: false}
-      - {label: "Article", name: "body", widget: "markdown"}
-      - {label: "Présent sur l'accueil", name: "onHome", widget: "boolean", default: false}
-      - label: "Tags (actus liées)"
-        name: "tags"
-        widget: "relation"
-        collection: "actionstags"
-        searchFields: ["label"]
-        valueField: "label"
-        displayFields: ["label"]
-        multiple: true
-  
-  - label: "Tags (actions)"
-    name: "actionstags"
-    create: true
-    slug: "{{label}}"
-    folder: "src/pages/nos-actions/tags"
-    fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "actions-tags"}
-      - {label: "Libellé", name: label, widget: string}
-      - {name: image, label: Icône, widget: image}
-
   - label: "Associations régionales"
     name: "reseauassos"
     create: true
     slug: "{{label}}"
-    folder: "src/pages/reseau-fne/assos"
+    folder: "src/pages/partenaires/assos"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "reseau-assos"}
       - {label: "Libellé", name: label, widget: string}
@@ -96,20 +45,9 @@ collections:
     name: "reseaufedes"
     create: true
     slug: "{{label}}"
-    folder: "src/pages/reseau-fne/fedes"
+    folder: "src/pages/partenaires/fedes"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "reseau-fedes"}
-      - {label: "Libellé", name: label, widget: string}
-      - {label: "Lien site", name: url, widget: string, required: false}
-      - {name: image, label: Logo, widget: image, required: false}
-  
-  - label: "Soutiens"
-    name: "soutiens"
-    create: true
-    slug: "{{label}}"
-    folder: "src/pages/soutiens/collectifs"
-    fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "soutiens"}
       - {label: "Libellé", name: label, widget: string}
       - {label: "Lien site", name: url, widget: string, required: false}
       - {name: image, label: Logo, widget: image, required: false}
@@ -118,7 +56,7 @@ collections:
     label: "Équipe"
     folder: "src/pages/qui-sommes-nous/equipe"
     fields:
-      - { name: title, label: "Titre", default: "L'équipe de FNE BFC" }
+      - { name: title, label: "Titre", default: "L'équipe du plateau débat public BFC" }
       - name: admins
         label: Administrateurs
         widget: list
@@ -138,7 +76,7 @@ collections:
     name: "categories"
     create: true
     slug: "{{label}}"
-    folder: "src/pages/documentation/categories"
+    folder: "src/pages/publications/categories"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "categories"}
       - {label: "Libellé", name: label, widget: string}
@@ -146,7 +84,7 @@ collections:
   - label: "Documents"
     name: "documents"
     create: true
-    folder: "src/pages/documentation/documents"
+    folder: "src/pages/publications/documents"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "documents"}
       - {label: "Date", name: "date", widget: "datetime", pickerUtc: false, dateFormat: "DD/MM/YYYY", timeFormat: "HH:mm"}
@@ -173,22 +111,12 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "association-page"}
           - {label: "Contenu de la page", name: "body", widget: "markdown"}
-      - file: "src/pages/qui-sommes-nous/propriete/index.md"
-        label: "Les biens fonciers naturels"
-        name: "propriete"
+      - file: "src/pages/qui-sommes-nous/processus/index.md"
+        label: "Processus"
+        name: "processus"
         fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "propriete-page"}
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "processus-page"}
           - {label: "Contenu de la page", name: "body", widget: "markdown"}
-
-  - label: "Bandeau d'accueil"
-    name: "slider"
-    create: true
-    slug: "{{label}}"
-    folder: "src/pages/slider"
-    fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "slider"}
-      - {label: "Libellé", name: label, widget: string}
-      - {name: photo, label: "Photo", widget: image}
 
   - label: "Fichiers à partager"
     name: "files"

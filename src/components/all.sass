@@ -1,12 +1,12 @@
 @import "~bulma/sass/utilities/initial-variables"
 
-$fne-red: #c90c0f
+$fne-red: #008037
 $fne-red-invert: #fff
 
 $primary: $fne-red
 $primary-invert: $fne-red-invert
-$body-color: #50596c
-$strong-color: #50596c
+$body-color: #000
+$strong-color: #000
 $body-size: 18px
 $link: $fne-red
 
@@ -39,6 +39,9 @@ $link: $fne-red
 .saira
     font-family: Saira, sans-serif
 
+.title
+    color: #000
+
 h2
     @extend .title
     @extend .is-3
@@ -68,21 +71,12 @@ h1
     text-align: center
     font-weight: normal
 
-html.has-navbar-fixed-top, body.has-navbar-fixed-top
-    padding-top: 80px
-
 .header
+    .logo
+        margin-top: 0.5rem
     svg
         margin-bottom: 0
         position: absolute
-    
-    .logo
-        position: relative
-        @extend .saira
-    
-        div
-            position: absolute
-            font-size: 1.2rem
     
     .navbar
         @extend .has-shadow
@@ -173,10 +167,7 @@ footer
             margin-left: 1rem
 
 .agenda
-    a
-        color: #fff
     h2
-        color: #fff
         margin: 0
     .day
         line-height: 0.8rem
@@ -236,10 +227,6 @@ footer
 @media screen and (max-width: 768px)
     .no-padding-mobile
         padding: 0 !important
-
-.outdated, .outdated h2
-    color: #d0a6a6 !important
-    background: #a61a18
 
 ul.menu-list
     padding-left: 0

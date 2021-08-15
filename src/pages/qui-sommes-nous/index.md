@@ -19,7 +19,7 @@ Le hérisson est emblématique à plus d’un titre. Parce qu’il est pacifique
 
 ## Une structure fédérale
 
-FNE-BFC est un pôle régional fédérateur et une interface entre le pôle national ([FNE](https://www.fne.asso.fr/)) et des pôles infrarégionaux et départementaux (nos [associations adhérentes](/qui-sommes-nous/reseau-fne/)). A ce titre là nous gérons les flux montants et descendants : informations, actions, campagnes, besoins.
+FNE-BFC est un pôle régional fédérateur et une interface entre le pôle national ([FNE](https://www.fne.asso.fr/)) et des pôles infrarégionaux et départementaux. A ce titre là nous gérons les flux montants et descendants : informations, actions, campagnes, besoins.
 
 FNE-BFC s’appuie sur ses fédérations et associations locales membres, afin d’amplifier le travail de terrain, d’impliquer les acteurs locaux et de créer une cohérence territoriale durable. Pour cela nous œuvrons à :
 
@@ -44,8 +44,8 @@ Par ses bénévoles, FNE-BFC :
 
 Par ses salarié·e·s, FNE-BFC élargit et spécialise ses missions et objectifs par deux pôles complémentaires :
 
-* Celui du Débat Public qu’elle anime, dans le cadre du [Plateau Débat Public](https://fne-bfc.netlify.app/nos-actions/programmes/d%C3%A9bat-public/), au sein de la [Maison de l’Environnement de Bourgogne Franche-Comté](http://www.maison-environnement-franchecomte.fr/) sise à Besançon. Le Plateau Débat Public facilite la rencontre des cinq acteurs de la vie publique (État, élus locaux, entreprises, syndicats, citoyens), collaborant ainsi à la gouvernance à cinq instauré par le Grenelle II de l’environnement.
-* Celui de [biodiversit’haie](/nos-actions/programmes/biodiversithaies/)
+* Celui du Débat Public qu’elle anime, dans le cadre du, au sein de la [Maison de l’Environnement de Bourgogne Franche-Comté](http://www.maison-environnement-franchecomte.fr/) sise à Besançon. Le Plateau Débat Public facilite la rencontre des cinq acteurs de la vie publique (État, élus locaux, entreprises, syndicats, citoyens), collaborant ainsi à la gouvernance à cinq instauré par le Grenelle II de l’environnement.
+* Celui de 
 
 ## Nos statuts
 

@@ -36,7 +36,7 @@ const TeamTemplate = ({ admins, salaries }) => {
       <section className="hero is-primary">
         <div className="hero-body">
           <div className="container has-text-centered">
-            <h1>L'équipe de FNE BFC</h1>
+            <h1>L'équipe du plateau débat public BFC</h1>
           </div>
         </div>
       </section>

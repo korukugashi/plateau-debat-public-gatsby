@@ -3,7 +3,6 @@ import { fr } from "netlify-cms-locales";
 import React from "react"
 
 import TeamPreview from './preview-templates/TeamPreview';
-import NewsPreview from './preview-templates/NewsPreview';
 import FilesPreview from './preview-templates/FilesPreview';
 import '../components/all.sass';
 import '../components/dontpurge.sass';
@@ -11,7 +10,6 @@ import '../components/dontpurge.sass';
 CMS.registerLocale('fr', fr);
 
 CMS.registerPreviewTemplate('team', TeamPreview);
-CMS.registerPreviewTemplate('actions', NewsPreview);
 CMS.registerPreviewTemplate('files', FilesPreview);
 
 CMS.registerEditorComponent({

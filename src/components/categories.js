@@ -42,7 +42,7 @@ const Categories = ({ slug }) => {
               tag={tag}
               current={
                 decodeURIComponent(slug) === tag.node.fields.slug ||
-                (slug === "/documentation/" && index === 0)
+                (slug === "/publications/" && index === 0)
               }
             />
           ))}

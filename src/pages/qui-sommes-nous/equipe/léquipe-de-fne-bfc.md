@@ -1,5 +1,5 @@
 ---
-title: L'équipe de FNE BFC
+title: L'équipe du plateau débat public BFC
 admins:
   - name: Hervé Bellimaz
     fonction: Président

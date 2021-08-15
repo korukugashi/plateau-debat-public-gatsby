@@ -50,7 +50,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-matomo',
       options: {
-        siteId: '4',
+        siteId: '5',
         matomoUrl: '//koruku.alwaysdata.net/matomo/',
         siteUrl: 'https://www.debatpublic-bfc.org'
       }
@@ -66,7 +66,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#c90c0f`,
         display: `minimal-ui`,
-        icon: `src/images/herisson.svg`, // This path is relative to the root of the site.
+        icon: `static/logo-dp-bfc.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

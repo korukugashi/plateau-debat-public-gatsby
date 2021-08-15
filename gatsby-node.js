@@ -17,107 +17,6 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `{
           allMarkdownRemark(
-            filter: { frontmatter: { templateKey: { eq: "action-post" } } }
-          ) {
-            edges {
-              node {
-                fields {
-                  slug
-                }
-              }
-            }
-          }
-        }`
-      ).then(result => {
-        if (result.errors) {
-          reject(result.errors)
-        }
-
-        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-          createPage({
-            path: node.fields.slug,
-            component: path.resolve(`./src/components/actionpost.js`),
-            context: {
-              slug: node.fields.slug,
-            },
-          })
-        })
-      })
-    )
-    resolve(
-      graphql(
-        `{
-          allMarkdownRemark(
-            filter: { frontmatter: { templateKey: { eq: "programmes" } } }
-          ) {
-            edges {
-              node {
-                fields {
-                  slug
-                }
-                frontmatter {
-                  tags
-                }
-              }
-            }
-          }
-        }`
-      ).then(result => {
-        if (result.errors) {
-          reject(result.errors)
-        }
-
-        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-          createPage({
-            path: node.fields.slug,
-            component: path.resolve(`./src/components/programme.js`),
-            context: {
-              slug: node.fields.slug,
-              tags: node.frontmatter.tags
-            },
-          })
-        })
-      })
-    )
-    resolve(
-      graphql(
-        `{
-          allMarkdownRemark(
-            sort: { fields: [frontmatter___label] }
-            filter: { frontmatter: { templateKey: { eq: "actions-tags" } } }
-          ) {
-            edges {
-              node {
-                fields {
-                  slug
-                }
-                frontmatter {
-                  label
-                }
-              }
-            }
-          }
-        }`
-      ).then(result => {
-        if (result.errors) {
-          reject(result.errors)
-        }
-
-        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-          createPage({
-            path: node.fields.slug,
-            component: path.resolve(`./src/pages/index.js`),
-            context: {
-              tags: [node.frontmatter.label]
-            },
-          })
-        })
-      })
-    )
-    resolve(
-      graphql(
-        `{
-          allMarkdownRemark(
             sort: { fields: [frontmatter___label] }
             filter: { frontmatter: { templateKey: { eq: "categories" } } }
           ) {
@@ -141,7 +40,7 @@ exports.createPages = ({ graphql, actions }) => {
         result.data.allMarkdownRemark.edges.forEach(({ node }) => {
           createPage({
             path: node.fields.slug,
-            component: path.resolve(`./src/pages/documentation/index.js`),
+            component: path.resolve(`./src/pages/publications/index.js`),
             context: {
               slug: node.fields.slug
             },

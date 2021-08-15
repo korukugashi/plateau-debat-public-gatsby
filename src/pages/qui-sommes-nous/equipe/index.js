@@ -35,8 +35,8 @@ const Equipe = () => {
   return (
     <Layout>
       <SEO
-        title="L'équipe de FNE BFC"
-        description="Les administrateurs, salariés et bénévoles de Franche-Nature Environnement Bourgogne Franche-Comté"
+        title="L'équipe du plateau débat public BFC"
+        description="Les administrateurs, salariés et bénévoles du plateau débat public Bourgogne Franche-Comté"
       />
       <TeamTemplate
         admins={
