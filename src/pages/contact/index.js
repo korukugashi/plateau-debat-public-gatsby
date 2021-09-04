@@ -23,10 +23,12 @@ const Contact = () => (
                 <div className="container">
                     <div className="columns is-vcentered">
                         <address className="column is-6">
-                            <p><small>C/O</small> Maison de l’environnement</p>
+                            <p>France Nature Environnement Bourgogne Franche-Comté</p>
+                            <p>Maison de l’environnement</p>
                             <p>7 rue Voirin<br />25000 Besançon</p>
-                            <div><span className="has-text-weight-bold">Tél :</span> 03 81 80 92 98</div>
-                            <div><span className="has-text-weight-bold">Email :</span> <Obfuscate email="contact@fne-bfc.fr" /></div>
+                            <div><span className="has-text-weight-bold">Tél :</span> <Obfuscate tel="+33 3 81 80 92 98" /></div>
+                            <div><span className="has-text-weight-bold">Portable :</span> <Obfuscate tel="+33 6 52 18 06 93" /></div>
+                            <div><span className="has-text-weight-bold">Email :</span> <Obfuscate email="animation@debatpublic-bfc.org" /></div>
                         </address>
                         <div className="column is-6">
                             <iframe title="Adresse FNE BFC" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" style={{ width: '100%', height: 300}} src="https://www.openstreetmap.org/export/embed.html?bbox=6.012308299541474%2C47.24160465865322%2C6.014362871646881%2C47.24270633650406&amp;layer=mapnik&amp;marker=47.24215641091987%2C6.013335585594177"></iframe>

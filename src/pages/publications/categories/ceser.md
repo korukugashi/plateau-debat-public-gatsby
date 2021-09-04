@@ -1,4 +1,0 @@
----
-templateKey: categories
-label: CESER
----

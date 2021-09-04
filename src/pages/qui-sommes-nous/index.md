@@ -15,7 +15,7 @@ Le Plateau Débat Public, seule expérience de ce type en France, représente et
 
 Ce dispositif est animé par France Nature Environnement Bourgogne Franche-Comté (FNE BFC), et constitue l'un des trois pôle de la Maison de l'Environnement de Bourgogne Franche-Comté (MEBFC).
 
-![Fonctionnement du plateau débat public avec la maison de l'environnement Bourgogne Franche-Comté](/img/mefc_fne_dp-min.png?nf_resize=fit&w=400#img-center "Fonctionnement du plateau débat public avec la maison de l'environnement Bourgogne Franche-Comté")
+![Fonctionnement du plateau débat public avec la maison de l'environnement Bourgogne Franche-Comté](/img/mefc_fne_dp-min.png?nf_resize=fit&w=600#img-center "Fonctionnement du plateau débat public avec la maison de l'environnement Bourgogne Franche-Comté")
 
 Il s'inscrit au sein de la **gouvernance à 5 instaurée par le Grenelle de l'environnement**. Ce mode de gouvernance associe l'Etat, les élus, les syndicats représentatifs des salariés, les entreprises et les associations environnementales.
 

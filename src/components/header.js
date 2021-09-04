@@ -96,10 +96,10 @@ const Header = ({siteTitle = ""}) => {
     
                   <div className="navbar-dropdown">
                     <Link className="navbar-item" to="/publications/mots-et-debats/">
-                      Mots et débats
+                      Lettre d'info : Mots et débats
                     </Link>
                     <Link className="navbar-item" to="/publications/">
-                      Publications et thématiques
+                      Publications thématiques
                     </Link>
                   </div>
                 </div>

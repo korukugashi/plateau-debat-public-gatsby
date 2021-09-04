@@ -55,36 +55,38 @@ collections:
           - { name: fonction, label: "Fonction" }
           - { name: photo, label: "Photo du salarié", widget: image}
 
-  - label: "Catégories de documents"
-    name: "categories"
+  - label: "CR Débats"
+    name: "crdebats"
     create: true
-    slug: "{{label}}"
-    folder: "src/pages/publications/categories"
+    folder: "src/pages/cr-debats"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "categories"}
-      - {label: "Libellé", name: label, widget: string}
-
-  - label: "Documents"
-    name: "documents"
-    create: true
-    folder: "src/pages/publications/documents"
-    fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "documents"}
-      - {label: "Date", name: "date", widget: "datetime", pickerUtc: false, dateFormat: "DD/MM/YYYY", timeFormat: "HH:mm"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "cr-debats"}
       - {label: "Titre", name: title, widget: string}
-      - {label: "Description", name: "body", widget: "markdown"}
-      - {label: "Fichier", name: file, widget: "file"}
-      - {name: photo, label: "Photo de présentation", widget: image}
-      - label: "Catégorie"
-        name: category
+      - {label: "Lieu", name: location, widget: string, required: false}
+      - {label: "Date", name: "date", widget: "date", pickerUtc: false, dateFormat: "DD/MM/YYYY"}
+      - {label: "Description", name: description, widget: string, required: false}
+      - { name: photo, label: "Plaquette de présentation", widget: image}
+      - {label: "Lien CR", name: link, widget: string}
+      - label: "Tags"
+        name: "tags"
         widget: "relation"
-        collection: "categories"
+        collection: "debattags"
         searchFields: ["label"]
         valueField: "label"
         displayFields: ["label"]
-        multiple: false
+        multiple: true
+      - {label: "Pour aller plus loin", name: "body", widget: "markdown", required: false}
 
-  
+  - label: "Tags"
+    name: "debattags"
+    create: true
+    slug: "{{label}}"
+    folder: "src/data/tags"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "debat-tags"}
+      - {label: "Libellé", name: label, widget: string}
+      - {name: image, label: Icône, widget: image}
+
   - name: "pages"
     label: "Pages"
     files:
