@@ -8,28 +8,33 @@ const CrTemplate = cr => {
   const crDate = new Date(cr.node.frontmatter.date)
   return (
     <article className="box" key={cr.node.frontmatter.title} style={{background: "#e0e0e0"}}>
-      <div className="columns is-vcentered">
-        <div className="column is-narrow has-text-centered">
-          <div style={{width: 150}}>
-            <img
-              src={`${process.env.NODE_ENV === 'development' ? 'https://debatpublic-bfc.netlify.app' : ''}${cr.node.frontmatter.photo}?nf_resize=fit&w=150&h=200`}
-              alt={cr.node.frontmatter.title}
-              style={{width: 150, height: 200}}
-            />
+      <div className="columns is-vcentered has-text-centered">
+        <div className="column is-narrow">
+          <div style={{width: 150, margin: '0 auto'}}>
+            <a href={cr.node.frontmatter.link}>
+              <img
+                src={`${process.env.NODE_ENV === 'development' ? 'https://debatpublic-bfc.netlify.app' : ''}${cr.node.frontmatter.photo}?nf_resize=smartcrop&w=150&h=200`}
+                alt={cr.node.frontmatter.title}
+                style={{width: 150, height: 200}}
+              />
+            </a>
           </div>
-          <div className="mt-2"><a href={cr.node.frontmatter.link} className="button is-primary">Voir le CR</a></div>
         </div>
         <div className="column">
           <h2 className="is-size-5 mb-1 mt-0">{cr.node.frontmatter.title}</h2>
-          <div style={{fontStyle: "italic", color: "#888"}}>
+          <div className="is-size-7" style={{fontStyle: "italic", color: "#888"}}>
             <address style={{display: "inline", fontStyle: "italic"}}>{cr.node.frontmatter.location}</address>{' '}-{' '}
             <time datetime={crDate.toISOString().substr(0, 10)}>
               {new Intl.DateTimeFormat('fr-FR').format(crDate)}
             </time>
           </div>
-          <div className="mt-2 has-text-justified is-size-7">{cr.node.frontmatter.description}</div>
-          <div className="mt-2">
-            {cr.node.frontmatter.tags.map(tag => <div className="tag mr-2 is-dark">{tag}</div>)}
+          <div className="is-size-7">{cr.node.frontmatter.description}</div>
+          <div className="has-text-centered">
+            {cr.node.frontmatter.tags.map(tag => <div className="tag mr-2 mt-2 is-light">{tag}</div>)}
+          </div>
+          <div className="mt-2 has-text-centered">
+            <a href={cr.node.frontmatter.link} className="button is-primary mr-2 mt-2 is-small">Voir le CR</a>
+            {cr.node.html ? <a href={cr.node.frontmatter.link} className="button is-info is-small mt-2">Pour aller plus loin</a> : null}
           </div>
         </div>
       </div>
@@ -56,6 +61,7 @@ const CrDebats = () => {
               tags
               link
             }
+            html
           }
         }
       }

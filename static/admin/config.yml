@@ -77,6 +77,39 @@ collections:
         multiple: true
       - {label: "Pour aller plus loin", name: "body", widget: "markdown", required: false}
 
+  - label: "Lettre info"
+    name: "lettreinfo"
+    create: true
+    folder: "src/pages/publications/mots-et-debats"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "lettre-info"}
+      - {label: "Titre", name: title, widget: string}
+      - {label: "Date", name: "date", widget: "date", pickerUtc: false, dateFormat: "DD/MM/YYYY"}
+      - {label: "Description", name: description, widget: string, required: false}
+      - { name: photo, label: "Plaquette de présentation", widget: image}
+      - {label: "Lien PDF", name: link, widget: string}
+
+  - label: "Publications"
+    name: "publications"
+    create: true
+    folder: "src/pages/publications"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "publications"}
+      - {label: "Titre", name: title, widget: string}
+      - {label: "Date", name: "date", widget: "date", pickerUtc: false, dateFormat: "DD/MM/YYYY"}
+      - {label: "Description", name: description, widget: string, required: false}
+      - { name: photo, label: "Plaquette de présentation", widget: image}
+      - {label: "Lien PDF", name: link, widget: string}
+      - label: "Tags"
+        name: "tags"
+        widget: "relation"
+        collection: "publicationtags"
+        searchFields: ["label"]
+        valueField: "label"
+        displayFields: ["label"]
+        multiple: true
+      - {label: "Pour aller plus loin", name: "body", widget: "markdown", required: false}
+
   - label: "Tags"
     name: "debattags"
     create: true
