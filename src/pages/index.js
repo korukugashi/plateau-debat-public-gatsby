@@ -21,10 +21,9 @@ export default function IndexPage({ data, location }) {
             Vidéo de présentation
           </div>
           <h1
-            className="title saira has-text-centered mt-4"
+            className="title saira mt-4"
             style={{
-              fontSize: "2rem",
-              textAlign: "center"
+              fontSize: "2rem"
             }}
           >
             Programme 2021

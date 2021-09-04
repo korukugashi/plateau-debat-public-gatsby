@@ -18,19 +18,18 @@ const PersonTemplate = ({ person, index }) => (
   </li>
 )
 
-const PersonListTemplate = ({ title, personlist }) => (
+const PersonListTemplate = ({ personlist }) => (
   <>
-    <h2>{title}</h2>
     <ul className="team">
       {personlist &&
         personlist.map((person, index) => (
-          <PersonTemplate person={person} index={index} />
+          <PersonTemplate person={person} index={index} key={person.name} />
         ))}
     </ul>
   </>
 )
 
-const TeamTemplate = ({ admins, salaries }) => {
+const TeamTemplate = ({ salaries }) => {
   return (
     <>
       <section className="hero is-primary">
@@ -43,10 +42,9 @@ const TeamTemplate = ({ admins, salaries }) => {
       <section className="section pt-2">
         <div className="container has-text-centered">
           <style type="text/css">
-            {`.team li{display:inline-block;width:180px;margin:20px 5px;font-size:1rem;font-family:Sohoma}`}
+            {`.team li{display:inline-block;width:320px;margin:20px 5px;font-size:1rem;font-family:Sohoma}`}
             {`.team div{font-family:Saira;font-size:1.1rem}`}
           </style>
-          <PersonListTemplate title="Administrateurs" personlist={admins} />
           <PersonListTemplate title="Salariés" personlist={salaries} />
         </div>
       </section>

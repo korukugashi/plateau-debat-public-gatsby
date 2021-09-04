@@ -3,12 +3,12 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import OrgTemplate from "./org"
 
-const AssosTemplate = () => {
+const PartenairesTemplate = () => {
   const data = useStaticQuery(graphql`
-    query AssosQuery {
+    query PartenairesQuery {
       allMarkdownRemark(
         sort: { fields: [frontmatter___label] }
-        filter: { frontmatter: { templateKey: { eq: "reseau-assos" } } }
+        filter: { frontmatter: { templateKey: { eq: "partenaires" } } }
       ) {
         edges {
           node {
@@ -26,10 +26,10 @@ const AssosTemplate = () => {
     <ul style={{display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap'}}>
       {data.allMarkdownRemark.edges &&
         data.allMarkdownRemark.edges.map(org => (
-          <OrgTemplate {...org} />
+          <OrgTemplate key={org.node.frontmatter.label} {...org} />
         ))}
     </ul>
   )
 }
 
-export default AssosTemplate;
+export default PartenairesTemplate;

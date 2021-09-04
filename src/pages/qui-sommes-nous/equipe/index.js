@@ -9,18 +9,11 @@ const Equipe = () => {
   const data = useStaticQuery(graphql`
     query TeamQuery {
       allMarkdownRemark(
-        filter: {
-          frontmatter: { admins: { elemMatch: { name: { ne: null } } } }
-        }
+        filter: { frontmatter: { templateKey: { eq: "equipe" } } }
       ) {
         edges {
           node {
             frontmatter {
-              admins {
-                name
-                fonction
-                photo
-              }
               salaries {
                 name
                 fonction
@@ -36,13 +29,9 @@ const Equipe = () => {
     <Layout>
       <SEO
         title="L'équipe du plateau débat public BFC"
-        description="Les administrateurs, salariés et bénévoles du plateau débat public Bourgogne Franche-Comté"
+        description="L'équipe du plateau débat public Bourgogne Franche-Comté"
       />
       <TeamTemplate
-        admins={
-          data.allMarkdownRemark.edges &&
-          data.allMarkdownRemark.edges[0].node.frontmatter.admins
-        }
         salaries={
           data.allMarkdownRemark.edges &&
           data.allMarkdownRemark.edges[0].node.frontmatter.salaries

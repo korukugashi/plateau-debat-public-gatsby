@@ -2,8 +2,7 @@ import React from "react"
 
 import Layout from "../../../components/layout"
 import SEO from "../../../components/seo"
-import AssosTemplate from "../../../components/assos"
-import FedesTemplate from "../../../components/fedes"
+import PartenairesTemplate from "../../../components/partenaires"
 
 const Reseau = () => (
   <Layout>
@@ -20,13 +19,8 @@ const Reseau = () => (
     </section>
     <section className="section">
       <div className="container has-text-centered no-bullet">
-        <h2>Fédérations départementales</h2>
         <ul>
-        <FedesTemplate />
-        </ul>
-        <h2>Associations régionales</h2>
-        <ul>
-          <AssosTemplate />
+          <PartenairesTemplate />
         </ul>
       </div>
     </section>

@@ -21,9 +21,16 @@ const Processus = () => {
   return (
     <Layout>
       <SEO
-        title="Processus"
-        description=""
+        title="La méthode du Plateau Débat Public"
+        description="Comment organiser une action avec le dispositif Plateau Débat Public, de la planification à la mise en oeuvre, puis au suivi et à la valorisation du projet"
       />
+      <section className="hero is-primary">
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            <h1>La méthode du plateau débat public</h1>
+          </div>
+        </div>
+      </section>
       <section
         className="section"
         id="qui-sommes-nous"

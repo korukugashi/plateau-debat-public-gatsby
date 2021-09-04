@@ -54,7 +54,7 @@ const Header = ({siteTitle = ""}) => {
               <div className="is-hidden-touch sohoma has-text-weight-bold is-size-7 mt-4" style={{flexGrow: 1}}>Favoriser le dialogue environnemental sur notre territoire</div>
               <div className="is-flex ml-4 pb-3" style={{justifyContent: "flex-end"}}>
                 <div className="control has-icons-left">
-                  <span class="icon is-left">
+                  <span className="icon is-left">
                     <MdSearch style={{position: "relative", top: -3}} />
                   </span>
                   <input className="input is-small" type="text" placeholder="Rechercher sur le site" />

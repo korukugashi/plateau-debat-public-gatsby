@@ -21,20 +21,13 @@ const Contact = () => {
   return (
     <Layout>
       <SEO
-        title="Qui sommes-nous ?"
-        description="FNE BFC est la fédération régionale d’associations de protection de la nature et de l’environnement en Bourgogne Frnahce-Comté."
+        title="Historique et gouvernance"
+        description="Le Plateau Débat Public est animé par France Nature Environnement Bourgogne Franche-Comté. Il représente et sollicite un réseau d’acteurs : associations, élus, professionnels, représentants syndicaux, collectivités, représentants de l’état, citoyens et scientifiques"
       />
       <section className="hero is-primary">
         <div className="hero-body">
           <div className="container has-text-centered">
-            <h1>Qui sommes-nous ?</h1>
-            <p>
-              FNE Bourgogne Franche-Comté est une{" "}
-              <strong>
-                fédération régionale d’associations de protection de la nature
-                et de l’environnement.
-              </strong>
-            </p>
+            <h1>Historique et gouvernance</h1>
           </div>
         </div>
       </section>

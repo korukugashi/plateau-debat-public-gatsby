@@ -30,24 +30,13 @@ collections:
       - {label: "Horaires / durée", name: duration, widget: string}
       - {label: "Informations complémentaires", name: "body", widget: "markdown", required: false}
 
-  - label: "Associations régionales"
-    name: "reseauassos"
+  - label: "Partenaires"
+    name: "partenaires"
     create: true
     slug: "{{label}}"
-    folder: "src/pages/partenaires/assos"
+    folder: "src/pages/qui-sommes-nous/partenaires"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "reseau-assos"}
-      - {label: "Libellé", name: label, widget: string}
-      - {label: "Lien site", name: url, widget: string, required: false}
-      - {name: image, label: Logo, widget: image, required: false}
-  
-  - label: "Fédérations départementales"
-    name: "reseaufedes"
-    create: true
-    slug: "{{label}}"
-    folder: "src/pages/partenaires/fedes"
-    fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "reseau-fedes"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "partenaires"}
       - {label: "Libellé", name: label, widget: string}
       - {label: "Lien site", name: url, widget: string, required: false}
       - {name: image, label: Logo, widget: image, required: false}
@@ -56,14 +45,8 @@ collections:
     label: "Équipe"
     folder: "src/pages/qui-sommes-nous/equipe"
     fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "equipe"}
       - { name: title, label: "Titre", default: "L'équipe du plateau débat public BFC" }
-      - name: admins
-        label: Administrateurs
-        widget: list
-        fields:
-          - { name: name, label: "Prénom et nom de l'administrateur" }
-          - { name: fonction, label: "Fonction" }
-          - { name: photo, label: "Photo de l'administrateur", widget: image}
       - name: salaries
         label: Salariés
         widget: list
