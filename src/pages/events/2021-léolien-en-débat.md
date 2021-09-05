@@ -1,7 +1,7 @@
 ---
 templateKey: agenda
 date: 2021-01-19T17:30:00.000Z
-title: L'Éolien en débat
+title: "L'Éolien en débat:"
 photo: /img/2020-éolien2.jpg
 intro: Dans le cadre des changements climatiques actuels et de la loi sur la
   transition énergétique, la question du développement des énergies

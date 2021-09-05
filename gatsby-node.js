@@ -17,16 +17,12 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `{
           allMarkdownRemark(
-            sort: { fields: [frontmatter___label] }
-            filter: { frontmatter: { templateKey: { eq: "categories" } } }
+            filter: { frontmatter: { templateKey: { eq: "agenda" } } }
           ) {
             edges {
               node {
                 fields {
                   slug
-                }
-                frontmatter {
-                  label
                 }
               }
             }
@@ -40,11 +36,81 @@ exports.createPages = ({ graphql, actions }) => {
         result.data.allMarkdownRemark.edges.forEach(({ node }) => {
           createPage({
             path: node.fields.slug,
-            component: path.resolve(`./src/pages/publications/index.js`),
+            component: path.resolve(`./src/components/event.js`),
             context: {
               slug: node.fields.slug
             },
           })
+        })
+      })
+    )
+
+    resolve(
+      graphql(
+        `{
+          allMarkdownRemark(
+            filter: { frontmatter: { templateKey: { eq: "cr-debats" } } }
+          ) {
+            edges {
+              node {
+                html
+                fields {
+                  slug
+                }
+              }
+            }
+          }
+        }`
+      ).then(result => {
+        if (result.errors) {
+          reject(result.errors)
+        }
+
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+          if (node.html) {
+            createPage({
+              path: node.fields.slug,
+              component: path.resolve(`./src/components/article.js`),
+              context: {
+                slug: node.fields.slug
+              },
+            })
+          }
+        })
+      })
+    )
+
+    resolve(
+      graphql(
+        `{
+          allMarkdownRemark(
+            filter: { frontmatter: { templateKey: { eq: "publications" } } }
+          ) {
+            edges {
+              node {
+                html
+                fields {
+                  slug
+                }
+              }
+            }
+          }
+        }`
+      ).then(result => {
+        if (result.errors) {
+          reject(result.errors)
+        }
+
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+          if (node.html) {
+            createPage({
+              path: node.fields.slug,
+              component: path.resolve(`./src/components/article.js`),
+              context: {
+                slug: node.fields.slug
+              },
+            })
+          }
         })
       })
     )

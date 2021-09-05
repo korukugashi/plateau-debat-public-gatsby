@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
@@ -33,7 +33,7 @@ const PublicationsTemplate = cr => {
           </div>
           <div className="mt-2 has-text-centered">
             <a href={cr.node.frontmatter.link} className="button is-primary mr-2 mt-2 is-small">Voir le PDF</a>
-            {cr.node.html ? <a href={cr.node.frontmatter.link} className="button is-info is-small mt-2">Pour aller plus loin</a> : null}
+            {cr.node.html ? <Link to={cr.node.fields.slug} className="button is-info is-small mt-2">Pour aller plus loin</Link> : null}
           </div>
         </div>
       </div>
@@ -51,6 +51,9 @@ const Publications = () => {
       ) {
         edges {
           node {
+            fields {
+              slug
+            }
             frontmatter {
               title
               date

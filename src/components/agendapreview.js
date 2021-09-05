@@ -8,17 +8,15 @@ export const AgendaPreviewTemplate = event => {
 
   return (
     <div className="column is-6 mb-3">
-      <Link to="/" className={`box is-mobile event`} style={{ background: "#e0e0e0"}}>
+      <Link to={event.slug} className={`box is-mobile event`} style={{ background: "#e0e0e0"}}>
         <div className="columns is-vcentered has-text-centered">
           <div className="column is-narrow">
             <div style={{width: 150, height: 200, margin: '0 auto'}}>
-              <a href={`#`}>
-                <img
-                  src={`${process.env.NODE_ENV === 'development' ? 'https://debatpublic-bfc.netlify.app' : ''}${event.photo}?nf_resize=smartcrop&w=150&h=200`}
-                  alt={event.title}
-                  style={{width: 150, height: 200}}
-                />
-              </a>
+              <img
+                src={`${process.env.NODE_ENV === 'development' ? 'https://debatpublic-bfc.netlify.app' : ''}${event.photo}?nf_resize=smartcrop&w=150&h=200`}
+                alt={event.title}
+                style={{width: 150, height: 200}}
+              />
             </div>
           </div>
           <div className="column">
@@ -30,7 +28,7 @@ export const AgendaPreviewTemplate = event => {
             </div>
             <div className="is-size-7">{event.intro}</div>
             <div className="mt-2 has-text-centered">
-              <a href={`#`} className="button is-primary mr-2 mt-2 is-small">En savoir plus</a>
+              <Link to={event.slug} className="button is-primary mr-2 mt-2 is-small">En savoir plus</Link>
             </div>
           </div>
         </div>
@@ -53,6 +51,9 @@ const AgendaPreview = () => {
       ) {
         edges {
           node {
+            fields {
+              slug
+            }
             frontmatter {
               title
               date
@@ -67,7 +68,7 @@ const AgendaPreview = () => {
   return (
     <>
       {data.allMarkdownRemark.edges.map(event => (
-        <AgendaPreviewTemplate {...{now, ...event.node.frontmatter}} key={`${event.node.frontmatter.title}${event.node.frontmatter.date}`} />
+        <AgendaPreviewTemplate {...{now, ...event.node.frontmatter, slug: event.node.fields.slug}} key={`${event.node.fields.slug}`} />
       ))}
     </>
   )
