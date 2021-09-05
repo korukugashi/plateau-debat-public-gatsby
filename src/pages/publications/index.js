@@ -23,7 +23,7 @@ const PublicationsTemplate = cr => {
         <div className="column">
           <h2 className="is-size-5 mb-1 mt-0">{cr.node.frontmatter.title}</h2>
           <div className="is-size-7" style={{fontStyle: "italic", color: "#888"}}>
-            <time datetime={crDate.toISOString().substr(0, 10)}>
+            <time dateTime={crDate.toISOString().substr(0, 10)}>
               {new Intl.DateTimeFormat('fr-FR', {month: 'long', year: 'numeric'}).format(crDate)}
             </time>
           </div>
@@ -40,6 +40,18 @@ const PublicationsTemplate = cr => {
     </article>
   )
 }
+
+const TagTemplate = tag => (
+  <Link to={`/publications${tag.node.fields.slug}`} className="is-flex mr-2 mb-2 pl-2 pr-2 pt-2 pb-2" style={{border: "1px solid #ddd"}}>
+    <img
+      src={`${process.env.NODE_ENV === 'development' ? 'https://debatpublic-bfc.netlify.app' : ''}${tag.node.frontmatter.image}?nf_resize=smartcrop&w=32&h=32`}
+      alt={tag.node.frontmatter.label}
+      style={{width: 32, height: 32}}
+      className="mr-3"
+    />
+    {tag.node.frontmatter.label}
+  </Link>
+)
 
 const Publications = () => {
   const data = useStaticQuery(graphql`
@@ -67,6 +79,23 @@ const Publications = () => {
           }
         }
       }
+      tags: allMarkdownRemark(
+        sort: { fields: [frontmatter___label], order: ASC }
+        filter: { frontmatter: { templateKey: { eq: "debat-tags" } } }
+        limit: 30
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              label
+              image
+            }
+          }
+        }
+      }
     }
   `)
 
@@ -85,7 +114,13 @@ const Publications = () => {
       </section>
       <section className="section">
         <div className="container">
-          <div className="columns is-multiline">
+          <div className="is-flex debattags" style={{justifyContent: "center", flexWrap: "wrap"}}>
+            <div className="pt-2 mr-3">Filtrer par thème :</div>
+            {data.tags.edges.map(tag => (
+              <TagTemplate {...tag} key={tag.node.frontmatter.label} />
+            ))}
+          </div>
+          <div className="columns mt-3 is-multiline">
             {data.allMarkdownRemark.edges.map(cr => (
               <div className="column is-6">
                 <PublicationsTemplate {...cr} />

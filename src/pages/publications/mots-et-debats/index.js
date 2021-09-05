@@ -23,7 +23,7 @@ const LettreInfoTemplate = cr => {
         <div className="column">
           <h2 className="is-size-5 mb-1 mt-0">{cr.node.frontmatter.title}</h2>
           <div className="is-size-7" style={{fontStyle: "italic", color: "#888"}}>
-            <time datetime={crDate.toISOString().substr(0, 10)}>
+            <time dateTime={crDate.toISOString().substr(0, 10)}>
               {new Intl.DateTimeFormat('fr-FR', {month: 'long', year: 'numeric'}).format(crDate)}
             </time>
           </div>

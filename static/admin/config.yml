@@ -118,7 +118,7 @@ collections:
     name: "debattags"
     create: true
     slug: "{{label}}"
-    folder: "src/data/tags"
+    folder: "src/pages/tags"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "debat-tags"}
       - {label: "Libellé", name: label, widget: string}
