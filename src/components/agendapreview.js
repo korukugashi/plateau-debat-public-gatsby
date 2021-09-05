@@ -1,29 +1,38 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, Link, graphql } from "gatsby"
-import { MdSchedule, MdRoom } from "react-icons/md"
-import moment from "moment"
-import "moment/locale/fr"
 
 export const AgendaPreviewTemplate = event => {
-  const date = moment(event.date)
-  const dateStd = date.format("YYYY-MM-DD")
+  const date = new Date(event.date)
+
+  if (date.getFullYear() !== event.now.getFullYear()) return null;
+
   return (
-    <div className="column is-3">
-      <Link to="/" className={`columns is-mobile event ${event.now > dateStd ? 'outdated' : ''}`}>
-        <div className="column is-3 day">
-          <time dateTime={dateStd} className="is-size-2 saira">
-            {date.format("DD")}{" "}
-            <small className="is-size-6">{date.format("MMMM")}</small>
-          </time>
-        </div>
-        <div className="column is-size-7">
-          <h2 className="is-size-6">{event.title}</h2>
-          <time dateTime={date.format("HH:mm")}>
-            <MdSchedule /> {event.duration}
-          </time>
-          <address>
-            <MdRoom /> {event.location}
-          </address>
+    <div className="column is-6 mb-3">
+      <Link to="/" className={`box is-mobile event`} style={{ background: "#e0e0e0"}}>
+        <div className="columns is-vcentered has-text-centered">
+          <div className="column is-narrow">
+            <div style={{width: 150, height: 200, margin: '0 auto'}}>
+              <a href={`#`}>
+                <img
+                  src={`${process.env.NODE_ENV === 'development' ? 'https://debatpublic-bfc.netlify.app' : ''}${event.photo}?nf_resize=smartcrop&w=150&h=200`}
+                  alt={event.title}
+                  style={{width: 150, height: 200}}
+                />
+              </a>
+            </div>
+          </div>
+          <div className="column">
+            <h2 className="is-size-6">{event.title}</h2>
+            <div>
+              <time dateTime={date.toISOString().substr(0, 10)} className="is-size-6 saira">
+                {new Intl.DateTimeFormat('fr-FR', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}).format(date)}
+              </time>
+            </div>
+            <div className="is-size-7">{event.intro}</div>
+            <div className="mt-2 has-text-centered">
+              <a href={`#`} className="button is-primary mr-2 mt-2 is-small">En savoir plus</a>
+            </div>
+          </div>
         </div>
       </Link>
     </div>
@@ -31,30 +40,30 @@ export const AgendaPreviewTemplate = event => {
 }
 
 const AgendaPreview = () => {
-  const [now, setNow] = useState('2000-01-01')
+  const [now, setNow] = useState(new Date('2000-01-01'))
   useEffect(() => {
-    const dateNow = moment()
-    setNow(dateNow.format("YYYY-MM-DD"))
+    setNow(new Date())
   }, [])
   const data = useStaticQuery(graphql`
     query AgendaPreviewQuery {
       allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC }
         filter: { frontmatter: { templateKey: { eq: "agenda" } } }
-        limit: 3
+        limit: 10
       ) {
         edges {
           node {
             frontmatter {
               title
               date
+              photo
+              intro
             }
           }
         }
       }
     }
   `)
-  moment.locale("fr")
   return (
     <>
       {data.allMarkdownRemark.edges.map(event => (

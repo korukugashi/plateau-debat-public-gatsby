@@ -18,17 +18,17 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - label: "Agenda"
-    name: "agenda"
+  - label: "Évènements (agenda)"
+    name: "events"
     create: true
-    folder: "src/pages/agenda/events"
+    folder: "src/pages/events"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "agenda"}
       - {label: "Date", name: "date", widget: "datetime", pickerUtc: false, dateFormat: "DD/MM/YYYY", timeFormat: "HH:mm"}
       - {label: "Titre", name: title, widget: string}
-      - {label: "Lieu", name: location, widget: string}
-      - {label: "Horaires / durée", name: duration, widget: string}
-      - {label: "Informations complémentaires", name: "body", widget: "markdown", required: false}
+      - {name: photo, label: "Plaquette de présentation", widget: image}
+      - {label: "Introduction (page accueil)", name: intro, widget: string}
+      - {label: "Description complète", name: "body", widget: "markdown", required: false}
 
   - label: "Partenaires"
     name: "partenaires"

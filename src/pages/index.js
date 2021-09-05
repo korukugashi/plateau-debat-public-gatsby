@@ -1,5 +1,4 @@
 import React from "react"
-import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -10,13 +9,14 @@ export default function IndexPage({ data, location }) {
     <Layout>
       <SEO
         title="Accueil"
-        keywords={[`nature`, `environnement`, `bourgogne`, `franche-comte`]}
+        description="Organiser le débat public, permettre le dialogue environnemental, développer la culture de la participation en région Bourgogne Franche-Comté"
+        keywords={[`nature`, `environnement`, `bourgogne`, `franche-comte`, `débat public`, `concertation`, `démocratie participative`]}
       />
 
       <section
         className="section pt-2"
       >
-        <div className="container-fluid">
+        <div className="container">
           <div style={{height: "10rem", background: "#bbb", textAlign: "center"}}>
             Vidéo de présentation
           </div>
@@ -28,7 +28,7 @@ export default function IndexPage({ data, location }) {
           >
             Programme 2021
           </h1>
-          <div className="agenda columns">
+          <div className="agenda columns is-multiline is-centered">
             <AgendaPreview />
           </div>
         </div>
@@ -61,22 +61,3 @@ export default function IndexPage({ data, location }) {
     </Layout>
   )
 }
-
-export const query = graphql`
-  query {
-    debatImg: file(relativePath: { eq: "debat.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 125) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    haieImg: file(relativePath: { eq: "haie.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 125) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  }
-`
