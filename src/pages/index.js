@@ -17,9 +17,6 @@ export default function IndexPage({ data, location }) {
         className="section pt-2"
       >
         <div className="container">
-          <div style={{height: "10rem", background: "#bbb", textAlign: "center"}}>
-            Vidéo de présentation
-          </div>
           <h1
             className="title saira mt-4"
             style={{

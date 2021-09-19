@@ -24,6 +24,12 @@ const Header = ({siteTitle = ""}) => {
     setActive(!active);
   }
 
+  const searchRef = React.createRef();
+  const onSearch = (evt) => {
+    searchRef.current.value = `site:debatpublic-bfc.fr ${searchRef.current.value}`
+    return true;
+  }
+
   return (
     <header className="header">
       <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -57,7 +63,9 @@ const Header = ({siteTitle = ""}) => {
                   <span className="icon is-left">
                     <MdSearch style={{position: "relative", top: -3}} />
                   </span>
-                  <input className="input is-small" type="text" placeholder="Rechercher sur le site" />
+                  <form method="get" action="https://www.google.com/search" onSubmit={onSearch}>
+                    <input className="input is-small" type="text" placeholder="Rechercher sur le site" name="q" ref={searchRef} />
+                  </form>
                 </div>
                 <a className="button is-small" href="https://www.helloasso.com/associations/france-nature-environnement-bourgogne-franche-comte/formulaires/1/widget" style={{ marginLeft: '1rem' }}>Nous soutenir</a>
               </div>
