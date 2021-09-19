@@ -1,7 +1,7 @@
 backend:
-  name: proxy
-  proxy_url: http://localhost:8081/api/v1
-  #name: git-gateway
+  #name: proxy
+  #proxy_url: http://localhost:8081/api/v1
+  name: git-gateway
   repo: korukugashi/plateau-debat-public-gatsby
   branch: master
   commit_messages:
