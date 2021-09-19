@@ -9,6 +9,8 @@ link: /img/2019-Livret-sur-l-artificialisation.pdf
 tags:
   - Biodiversité
   - Territoire
+  - Eau
+  - Agriculture
 ---
 Peu présente dans le débat public, objet mal défini : l'artificialisation des sols continue de progresser en France
 
