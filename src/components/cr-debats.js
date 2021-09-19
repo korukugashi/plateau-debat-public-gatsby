@@ -1,8 +1,8 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 
-import Layout from "../../components/layout"
-import SEO from "../../components/seo"
+import Layout from "./layout"
+import SEO from "./seo"
 
 const CrTemplate = cr => {
   const crDate = new Date(cr.node.frontmatter.date)
@@ -54,51 +54,17 @@ const TagTemplate = tag => (
   </Link>
 )
 
-const CrDebats = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      cr: allMarkdownRemark(
-        sort: { fields: [frontmatter___date], order: DESC }
-        filter: { frontmatter: { templateKey: { eq: "cr-debats" } } }
-        limit: 20
-      ) {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              date
-              location
-              description
-              photo
-              tags
-              link
-            }
-            html
-          }
-        }
-      }
-      tags: allMarkdownRemark(
-        sort: { fields: [frontmatter___label], order: ASC }
-        filter: { frontmatter: { templateKey: { eq: "debat-tags" } } }
-        limit: 30
-      ) {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            frontmatter {
-              label
-              image
-            }
-          }
-        }
-      }
-    }
-  `)
+const CrDebats = (props) => {
+  const posts = props.data.cr.edges
+  const { currentPage, numPages, tagSlug } = props.pageContext
+  const isFirst = currentPage === 1
+  const isLast = currentPage === numPages
+  const prevPage = `/cr-debats${tagSlug || '/'}${
+    currentPage - 1 === 1 ? "" : `${(currentPage - 1).toString()}/`
+  }`
+  const nextPage = `/cr-debats${tagSlug || '/'}${(currentPage + 1).toString()}/`
+  const tags = props.data.tags.edges.filter(({node}) => 
+    props.data.allcr.edges.find(crEdge => crEdge.node.frontmatter.tags.indexOf(node.frontmatter.label) > -1))
 
   return (
     <Layout>
@@ -117,21 +83,117 @@ const CrDebats = () => {
         <div className="container">
           <div className="is-flex debattags" style={{justifyContent: "center", flexWrap: "wrap"}}>
             <div className="pt-2 mr-3">Filtrer par thème :</div>
-            {data.tags.edges.map(tag => (
+            {tags.map(tag => (
               <TagTemplate {...tag} key={tag.node.frontmatter.label} />
             ))}
           </div>
           <div className="mt-3 columns is-multiline">
-            {data.cr.edges.map(cr => (
+            {posts.map(cr => (
               <div className="column is-6" key={cr.node.frontmatter.title}>
                 <CrTemplate {...cr} />
               </div>
             ))}
           </div>
+          <nav
+            className="pagination"
+            role="navigation"
+            aria-label="pagination"
+            style={{ marginTop: "2rem" }}
+          >
+            {(!isFirst && (
+              <Link to={prevPage} rel="prev" className="pagination-previous">
+                ← Page précédante
+              </Link>
+            )) || (
+              <span className="pagination-previous" disabled>
+                ← Page précédante
+              </span>
+            )}
+            <ul className="pagination-list">
+              {Array.from({ length: numPages }, (_, i) => (
+                <li key={i}>
+                  <Link
+                    key={`pagination-number${i + 1}`}
+                    to={`/cr-debats${tagSlug || '/'}${i === 0 ? "" : `${i + 1}/`}`}
+                    className={`pagination-link${
+                      i + 1 === currentPage ? " is-current" : ""
+                    }`}
+                  >
+                    {i + 1}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            {(!isLast && (
+              <Link to={nextPage} rel="next" className="pagination-next">
+                Page suivante →
+              </Link>
+            )) || (
+              <span className="pagination-next" disabled>
+                Page suivante →
+              </span>
+            )}
+          </nav>
         </div>
       </section>
     </Layout>
   )
 }
+
+export const crListQuery = graphql`
+  query crListQuery($skip: Int!, $limit: Int!, $tags: [String]) {
+    cr: allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { templateKey: { eq: "cr-debats" }, tags: { in: $tags } } }
+      limit: $limit
+      skip: $skip
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            date
+            location
+            description
+            photo
+            tags
+            link
+          }
+          html
+        }
+      }
+    }
+    allcr: allMarkdownRemark(
+      filter: { frontmatter: { templateKey: { eq: "cr-debats" } } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            tags
+          }
+        }
+      }
+    }
+    tags: allMarkdownRemark(
+      sort: { fields: [frontmatter___label], order: ASC }
+      filter: { frontmatter: { templateKey: { eq: "debat-tags" } } }
+      limit: 30
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            label
+            image
+          }
+        }
+      }
+    }
+  }`
 
 export default CrDebats
