@@ -11,4 +11,5 @@ photo: /img/screenshot-2021-09-19-at-21-43-44-plateau-débat-public.png
 link: /img/2016_07-hydroelectricité.pdf
 tags:
   - Énergie
+  - Eau
 ---
